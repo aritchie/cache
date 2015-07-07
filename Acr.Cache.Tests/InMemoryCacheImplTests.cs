@@ -42,8 +42,9 @@ namespace Acr.Cache.Tests {
 
         [Test]
         public async Task CleanUpTest() {
+            this.cache.CleanUpTime = TimeSpan.FromSeconds(1);
             this.cache.Set("CleanUpTest", new object(), TimeSpan.FromSeconds(1));
-            await Task.Delay(2000);
+            await Task.Delay(3000);
             var obj = this.cache.Get<object>("CleanUpTest");
             Assert.IsNull(obj);
         }
