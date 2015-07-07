@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -91,35 +92,32 @@ namespace Acr.Cache.Impl {
 
             lock (this.syncLock) {
                 this.initialized = true;
-                Task.Factory.StartNew(this.RunCleanUp, this.cancelSource.Token);
+                this.RunCleanUp();
             }
         }
 
 
-        private void RunCleanUp() {
+        private async Task RunCleanUp() {
             while (!this.cancelSource.IsCancellationRequested) {
-                Task
-                    .Delay(this.CleanUpTime, this.cancelSource.Token)
-                    .ContinueWith(x => {
-                        this.CleanUp();
-                        this.RunCleanUp();
-                    })
-                    .ConfigureAwait(false);
-            }
-        }
+                try {
+                    await Task.Delay(this.CleanUpTime);
+                    if (this.cancelSource.IsCancellationRequested)
+                        return;
 
+                    var now = DateTime.UtcNow;
+                    lock (this.syncLock) {
+                        var list = this.cache.Keys
+                            .Select(x => (CacheItem) cache[x])
+                            .Where(x => x.ExpiryTime < now)
+                            .ToList();
 
-        private void CleanUp() {
-            var now = DateTime.UtcNow;
-
-            lock (this.syncLock) {
-                var list = this.cache.Keys
-                    .Select(x => (CacheItem) cache[x])
-                    .Where(x => x.ExpiryTime < now)
-                    .ToList();
-
-                foreach (var item in list)
-                    this.cache.Remove(item.Key);
+                        foreach (var item in list)
+                            this.cache.Remove(item.Key);
+                    }
+                }
+                catch (Exception ex) {
+                    Debug.WriteLine("[cache cleanup error]: {0}", ex);
+                }
             }
         }
 

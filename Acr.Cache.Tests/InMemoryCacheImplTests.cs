@@ -40,6 +40,7 @@ namespace Acr.Cache.Tests {
         }
 
 
+        [Timeout(10000)]
         [Test]
         public async Task CleanUpTest() {
             this.cache.CleanUpTime = TimeSpan.FromSeconds(1);
