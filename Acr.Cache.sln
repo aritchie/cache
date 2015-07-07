@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.Cache", "Acr.Cache\Acr.Cache.csproj", "{B294DF55-F431-4290-97E1-5609CD2E726C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA49E473-7A8E-4AD7-B334-DE18DBD90215}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\Acr.Cache.nuspec = nuspec\Acr.Cache.nuspec
+		nuspec\nuget.exe = nuspec\nuget.exe
+		nuspec\pack.cmd = nuspec\pack.cmd
+		nuspec\push.cmd = nuspec\push.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
