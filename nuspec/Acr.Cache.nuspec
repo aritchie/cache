@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.Cache</id>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <title>ACR Caching</title>
         <description>Caching abstraction with PCL based implementations</description>
         <authors>Allan Ritchie</authors>
@@ -12,6 +12,10 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>cache windows xamarin xam.pcl</tags>
         <releaseNotes>
+1.1
+Bugfixes
+
+1.0
 Initial release
         </releaseNotes>
     </metadata>

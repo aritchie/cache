@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA49E473-7A8E-4AD7-B334-DE18DBD90215}"
 	ProjectSection(SolutionItems) = preProject
 		nuspec\Acr.Cache.nuspec = nuspec\Acr.Cache.nuspec
+		nuspec\Acr.Cache.Sqlite.nuspec = nuspec\Acr.Cache.Sqlite.nuspec
 		nuspec\nuget.exe = nuspec\nuget.exe
 		nuspec\pack.cmd = nuspec\pack.cmd
 		nuspec\push.cmd = nuspec\push.cmd
@@ -15,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.Cache.Tests", "Acr.Cache.Tests\Acr.Cache.Tests.csproj", "{71972F16-6D95-451A-AC52-07887BFF1CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.Cache.Sqlite", "Acr.Cache.Sqlite\Acr.Cache.Sqlite.csproj", "{90603667-3B7A-4C49-BEFD-BF435131FAE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +33,10 @@ Global
 		{71972F16-6D95-451A-AC52-07887BFF1CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71972F16-6D95-451A-AC52-07887BFF1CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71972F16-6D95-451A-AC52-07887BFF1CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90603667-3B7A-4C49-BEFD-BF435131FAE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90603667-3B7A-4C49-BEFD-BF435131FAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90603667-3B7A-4C49-BEFD-BF435131FAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90603667-3B7A-4C49-BEFD-BF435131FAE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

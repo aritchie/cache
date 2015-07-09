@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Acr.Cache.Sqlite</id>
+        <version>1.0.0</version>
+        <title>ACR Caching SQLite</title>
+        <description>Caching abstraction with PCL based implementations - SQLite Edition</description>
+        <authors>Allan Ritchie</authors>
+        <owners>Allan Ritchie</owners>
+        <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
+        <projectUrl>https://github.com/aritchie/cache</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>cache windows sqlite xamarin xam.pcl</tags>
+        <dependencies>
+            <dependency id="Acr.Cache" version="[1, 2)" />
+            <dependency id="SQLite.Net-PCL" version="[3.0.5, 4)" />
+            <dependency id="Newtonsoft.Json" version="[7, 8)" />
+        </dependencies>
+        <releaseNotes>
+1.0
+Initial release
+        </releaseNotes>
+    </metadata>
+    <files>
+        <file src="..\Acr.Cache.Sqlite\bin\Release\Acr.Cache.Sqlite.dll" target="lib\portable-win+net45+wp8+win8+wpa81\Acr.Cache.Sqlite.dll" />
+    </files>
+</package>

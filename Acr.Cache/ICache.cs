@@ -9,7 +9,7 @@ namespace Acr.Cache {
         TimeSpan CleanUpTime { get; set; }
         TimeSpan DefaultLifeSpan { get; set; }
         bool Enabled { get; set; }
-        bool Set(string key, object obj, TimeSpan? timeSpan = null);
+        void Set(string key, object obj, TimeSpan? timeSpan = null);
         T Get<T>(string key);
         Task<T> TryGet<T>(string key, Func<Task<T>> getter, TimeSpan? timeSpan = null);
         bool Remove(string key);
