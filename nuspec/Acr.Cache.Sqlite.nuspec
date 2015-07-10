@@ -13,7 +13,7 @@
         <tags>cache windows sqlite xamarin xam.pcl</tags>
         <dependencies>
             <dependency id="Acr.Cache" version="[1, 2)" />
-            <dependency id="SQLite.Net-PCL" version="[3.0.5, 4)" />
+            <dependency id="sqlite-net-pcl" version="[1.0.11, 2)" />
             <dependency id="Newtonsoft.Json" version="[7, 8)" />
         </dependencies>
         <releaseNotes>

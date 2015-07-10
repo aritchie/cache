@@ -2,13 +2,13 @@
 using System.Linq;
 using Acr.Cache.Impl;
 using Newtonsoft.Json;
-using SQLite.Net;
+using SQLite;
 
 
 namespace Acr.Cache.Sqlite {
 
     public class SqliteCacheImpl : AbstractTimerCacheImpl {
-        private readonly SQLiteConnection db = new SQLiteConnection(null, "acrcache.db");
+        private readonly SQLiteConnection db = new SQLiteConnection("acrcache.db");
 
 
         protected override void Init() {
@@ -35,7 +35,13 @@ namespace Acr.Cache.Sqlite {
 
 
         public override T Get<T>(string key) {
-            var item = this.db.Get<SqlCacheItem>(x => x.Key == key && x.TypeName == typeof(T).FullName);
+            var item = this.db
+                .Table<SqlCacheItem>()
+                .FirstOrDefault(x =>
+                    x.Key == key &&
+                    x.TypeName == typeof(T).FullName
+                );
+
             if (item == null)
                 return default(T);
 
@@ -51,15 +57,22 @@ namespace Acr.Cache.Sqlite {
 
 
         public override void Set(string key, object obj, TimeSpan? timeSpan = null) {
-            var tbl = this.db.Table<SqlCacheItem>();
+            this.EnsureInitialized();
             var ts = timeSpan ?? this.DefaultLifeSpan;
 
-            var item = this.db.Get<SqlCacheItem>(key) ?? new SqlCacheItem();
+            var item = this.db.Table<SqlCacheItem>().FirstOrDefault(x => x.Key == key) ?? new SqlCacheItem();
             item.Key = key;
             item.DateExpiryUtc = DateTime.UtcNow.Add(ts);
             item.Json = JsonConvert.SerializeObject(obj);
             item.TypeName = obj.GetType().FullName;
             this.db.InsertOrReplace(item);
+        }
+
+
+        protected override void Dispose(bool disposing) {
+            base.Dispose(disposing);
+            if (disposing)
+                this.db.Dispose();
         }
     }
 }

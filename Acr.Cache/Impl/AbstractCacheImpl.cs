@@ -17,8 +17,9 @@ namespace Acr.Cache.Impl {
 
         public abstract T Get<T>(string key);
         public abstract bool Remove(string key);
-        public abstract void Set(string key, object obj, TimeSpan? timeSpan = default(TimeSpan?));
+        public abstract void Set(string key, object obj, TimeSpan? timeSpan = null);
         protected abstract void Init();
+
 
         protected void EnsureInitialized() {
             if (this.init)
@@ -31,7 +32,7 @@ namespace Acr.Cache.Impl {
         }
 
 
-        public virtual async Task<T> TryGet<T>(string key, Func<Task<T>> getter, TimeSpan? timeSpan = default(TimeSpan?)) {
+        public virtual async Task<T> TryGet<T>(string key, Func<Task<T>> getter, TimeSpan? timeSpan = null) {
             var obj = this.Get<T>(key);
             if (obj == null) {
                 obj = await getter();
@@ -45,8 +46,6 @@ namespace Acr.Cache.Impl {
         }
 
 
-        public virtual void Dispose() {
-            this.Dispose(true);
-        }
+        public virtual void Dispose() => this.Dispose(true);
     }
 }

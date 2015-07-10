@@ -11,8 +11,8 @@ namespace Acr.Cache.Tests {
 
         [TestFixtureSetUp]
         public void OnBeforeTests() {
-            if (File.Exists("acrcache.db3"))
-                File.Delete("acrcache.db3");
+            if (File.Exists("acrcache.db"))
+                File.Delete("acrcache.db");
         }
     }
 }
